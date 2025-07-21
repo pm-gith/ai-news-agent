@@ -105,11 +105,3 @@ def run_agent():
     if summaries:
         filename = save_summaries(summaries)
         send_email(filename)
-
-#automate
-
-
-schedule.every().day.at("14:13").do(run_agent)
-while True:
-    schedule.run_pending()
-    time.sleep(10)
