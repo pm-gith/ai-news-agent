@@ -13,7 +13,7 @@ This is a personal-project Python agent that fetches AI-related news from RSS fe
 - `.env.example` provided
 
 ## Project Structure
-
+```
 ai-news-agent/
 ├── agents/
 │   └── ai\_news\_agent.py      # Core logic of the agent. Update inputs on this file to repurpose agent for other news outlets
@@ -24,7 +24,7 @@ ai-news-agent/
 ├── .env.example                # Sample template for your .env
 ├── .gitignore                  # Files to ignore (like .env, venv)
 └── README.md                   # You're reading this
-
+```
 
 ## Getting Started
 
