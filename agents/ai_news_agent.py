@@ -1,7 +1,7 @@
 #main.py
 
 #Imports and .env loading
-import feedparser, os, yagmail, schedule, time
+import feedparser, os, yagmail
 from openai import OpenAI
 from dotenv import load_dotenv
 from datetime import datetime
@@ -66,8 +66,16 @@ def save_summaries(summaries):
             f.write(f"🔗 Read more: {link}\n\n") #Clean clickable link
     return filename
 
+#Module5b: Return HTML() version
+def generate_html_summaries(summaries):
+    html = "<h2>📰 Your Daily AI News Summary</h2><ul>"
+    for title, summary, link in summaries:
+        html += f"<li><strong>{title}</strong><br>{summary}<br><a href='{link}'>🔗 Read more</a><br><br><br</li>"
+    html += "</ul>"
+    return html
+
 #Module6: Send Email with Attachment - This script sends the summary file via email
-def send_email(filename):
+def send_email(filename, summary_html):
     email_user = os.getenv("EMAIL_USER")
     email_pass = os.getenv("EMAIL_PASSWORD")
     email_recipients = os.getenv("EMAIL_RECIPIENTS", "").split(",")
@@ -82,7 +90,7 @@ def send_email(filename):
     yag.send(to=email_user,
              bcc=email_recipients,
              subject=subject,
-             contents=body,
+             contents=[summary_html],
              attachments=filename
     )
 #confirmation log
@@ -102,6 +110,12 @@ def run_agent():
             summary = summarize_text(text)
             summaries.append((article['title'], summary, article['link']))
 
+    # If no summaries were generated, we can skip sending an email. If emailing, send both - html and txt versions
     if summaries:
+        summary_html = generate_html_summaries(summaries)
         filename = save_summaries(summaries)
+<<<<<<< HEAD
         send_email(filename)
+=======
+        send_email(filename, summary_html)
+>>>>>>> feature/clickable-links
