@@ -55,7 +55,7 @@ ai-news-agent/
     EMAIL_RECIPIENTS=comma,separated,list
     OPENAI_API_KEY=your_openai_key
     ```
-    
+
     Never commit your .env file - it is already ignored via .gitignore
 
 4. Run the Agent Manually, or let it run automatically on a daily schedule as configured
@@ -82,5 +82,5 @@ No warranties are given. The license may not give you all of the permissions nec
 Contributing
 Contributions, issues, and feature requests are welcome! Open a pull request or submit an issue to improve this project.
 
-Author
+Author</br>
 Created by Prachi Mishra. For questions or collaboration, feel free to reach out.
