@@ -43,24 +43,19 @@ ai-news-agent/
 3. Install Dependencies
    pip install <package>
    ## Dependencies/packages
+   ```
     Python 3.8+
-    openai
-    feedparser
-    beautifulsoup4
-    bs4
-    yagmail
-    schedule
-    time
-    python-dotenv
-    requests
+    openai, feedparser, beautifulsoup4, bs4, yagmail, schedule, time, python-dotenv, requests
+    ```
 
 3. Create your `.env` file at the root of your project, from the example:
-
+    ```
     EMAIL_USER=your@email.com
     EMAIL_PASSWORD=your_email_password
     EMAIL_RECIPIENTS=comma,separated,list
     OPENAI_API_KEY=your_openai_key
-
+    ```
+    
     Never commit your .env file - it is already ignored via .gitignore
 
 4. Run the Agent Manually, or let it run automatically on a daily schedule as configured
