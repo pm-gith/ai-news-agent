@@ -114,8 +114,4 @@ def run_agent():
     if summaries:
         summary_html = generate_html_summaries(summaries)
         filename = save_summaries(summaries)
-<<<<<<< HEAD
-        send_email(filename)
-=======
         send_email(filename, summary_html)
->>>>>>> feature/clickable-links
