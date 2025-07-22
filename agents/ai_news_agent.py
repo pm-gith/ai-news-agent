@@ -5,6 +5,7 @@ import feedparser, os, yagmail
 from openai import OpenAI
 from dotenv import load_dotenv
 from datetime import datetime
+from shared.subscriber_utils import load_subscribers, check_unsubscribers
 
 load_dotenv()
 
@@ -78,7 +79,9 @@ def generate_html_summaries(summaries):
 def send_email(filename, summary_html):
     email_user = os.getenv("EMAIL_USER")
     email_pass = os.getenv("EMAIL_PASSWORD")
-    email_recipients = os.getenv("EMAIL_RECIPIENTS", "").split(",")
+    #email_recipients = os.getenv("EMAIL_RECIPIENTS", "").split(",")
+    email_recipients = load_subscribers() #load subscribers from json file
+
     # Strip any spaces and ignore empty entries
     email_recipients = [e.strip() for e in email_recipients if e.strip()]
 
@@ -99,6 +102,8 @@ def send_email(filename, summary_html):
 #Module7: Orchestrate and Automate
 #pull everything together into a signle run_agent() function
 def run_agent():
+    check_unsubscribers()
+    
     articles = fetch_articles()
     summaries = []
 

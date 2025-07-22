@@ -4,3 +4,4 @@ venv
 __pycache__/
 .DS_Store
 *.txt
+data/subscribers.json
