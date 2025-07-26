@@ -4,9 +4,9 @@ on:
   schedule:
     - cron: "0 16 * * *"   # Every day at 8:00 AM PST
   workflow_dispatch:
-  push:
-    branches:
-      - git_action         # Runs workflow only when code is pushed to git_action branch
+  # push:
+  #   branches:
+  #     - git_action         # Runs workflow only from git_action branch
 
 jobs:
   run-agent:

@@ -9,6 +9,9 @@ from datetime import datetime
 # Load .env only if it exists (for local runs)
 if os.path.exists(".env"):
     load_dotenv()
+elif not (os.getenv("OPENAI_API_KEY") and os.getenv("EMAIL_USER") and os.getenv("EMAIL_PASSWORD") and os.getenv("EMAIL_RECIPIENTS")):
+    print("❌ No .env found and required environment variables are missing. Exiting.")
+    sys.exit(1)  # Cancel run if neither available
 
 # Secrets will come from GitHub Actions in production
 
