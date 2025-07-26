@@ -3,7 +3,7 @@ name: AI News Agent Daily Run
 on:
   schedule:
     #- cron: "0 16 * * *"   # Every day at 8:00 AM PST
-    - cron: "55 1 * * *"   # Every day at 5:45 PM PST
+    - cron: "59 1 * * *"   # Every day at 5:45 PM PST
   workflow_dispatch:
   push:
     branches:
