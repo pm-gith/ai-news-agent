@@ -3,8 +3,8 @@ import schedule
 import time
 
 #automate
-schedule.every().day.at("16:51").do(run_agent)
+schedule.every().day.at("08:00").do(run_agent)
 
 while True:
     schedule.run_pending()
-    time.sleep(10)
+    time.sleep(30)
