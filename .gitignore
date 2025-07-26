@@ -3,3 +3,4 @@
 venv
 __pycache__/
 .DS_Store
+AI_News_Summary*.txt
