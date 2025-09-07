@@ -17,15 +17,18 @@ elif not (os.getenv("OPENAI_API_KEY") and os.getenv("EMAIL_USER") and os.getenv(
 
 # Module2: Ingest News - This script fetches the latest articles from Wired's AI section RSS feed
 def fetch_articles():
-    feed = feedparser.parse("https://www.wired.com/feed/tag/ai/latest/rss")
+    rss_feeds = ["https://www.wired.com/feed/tag/ai/latest/rss","https://techcrunch.com/tag/artificial-intelligence/feed/","https://www.theverge.com/rss/ai-artificial-intelligence",
+                "https://www.zdnet.com/topic/ai/rss.xml","https://www.engadget.com/rss.xml","https://arstechnica.com/feed/"]
     articles = []
-    for entry in feed.entries:
-        summary = entry.get("summary", "") or entry.get("description", "")
-        articles.append({
-            'title': entry.title,
-            'link': entry.link,
-            'summary': summary # May be empty; will scrape later if needed
-        })
+    for url in rss_feeds:
+        feed = feedparser.parse(url)
+        for entry in feed.entries:
+            summary = entry.get("summary", "") or entry.get("description", "")
+            articles.append({
+                'title': entry.title,
+                'link': entry.link,
+                'summary': summary # May be empty; will scrape later if needed
+            })
     return articles
 
 #Module2b: Scrape Full Article
