@@ -344,7 +344,7 @@ def run_agent():
 
     eligible = [g for g in groups if g["score"] >= 3]
     eligible.sort(key=lambda g: g["score"], reverse=True)
-    top_n = eligible[:21]
+    top_n = eligible[:50]
 
     final_summaries = []
     for g in top_n:
